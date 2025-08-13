@@ -5,6 +5,12 @@ A collection of Capture-the-Flag challenges exploring weaknesses in the Diffieâ€
 
 Each level demonstrates a specific flaw or weak parameter choice, ranging from toy examples you can brute-force to more realistic attacks requiring specialized algorithms.
 
+
+# The Discrete Log Problem
+
+https://sdmntpritalynorth.oaiusercontent.com/files/00000000-949c-6246-ba6e-f95d26b6e461/raw?se=2025-08-13T09%3A56%3A19Z&sp=r&sv=2024-08-04&sr=b&scid=fee8efe5-9d41-5379-a318-a3d0ee8a8820&skoid=82a3371f-2f6c-4f81-8a78-2701b362559b&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-13T05%3A48%3A51Z&ske=2025-08-14T05%3A48%3A51Z&sks=b&skv=2024-08-04&sig=GNoMFKGFdCJb7/VJjK4cP3FbGTV2qO5gVYBKq4AGDek%3D<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/b91a6ae5-bc35-49c1-8abf-d7ae47ae7f10" />
+
+
 ---
 
 ## Levels
