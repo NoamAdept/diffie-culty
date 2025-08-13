@@ -1,46 +1,87 @@
-# DHKE CTF — Level 1 (pwn.college style)
+Here’s a cleaned-up, more general `README.md` that covers the whole project instead of just Level 1:
 
-A tiny service that simulates an insecure Diffie–Hellman exchange.
-Your goal: **recover Alice's private exponent `a`** from `p`, `g`, and `A = g^a mod p`,
-then submit `a` to the service to receive the flag.
+````markdown
+# diffie-culty
 
-- The service generates a **random flag** at container start and saves it to `/flag.txt`.
-- The flag file is **only revealed after you solve the challenge**. On success, the server
-  prints the flag and **deletes `/flag.txt`** so it cannot be read again.
-- Parameters are intentionally tiny (Level 1): brute forcing the discrete log is enough.
+A collection of Capture-the-Flag challenges exploring weaknesses in the Diffie–Hellman Key Exchange (DHKE) algorithm.
 
-## Run (Docker)
+Each level demonstrates a specific flaw or weak parameter choice, ranging from toy examples you can brute-force to more realistic attacks requiring specialized algorithms.
+
+---
+
+## Levels
+
+- **Level 1 – Tiny Prime**  
+  Parameters are so small you can brute-force the private key in seconds.  
+  Goal: Learn the basics of the discrete logarithm problem.
+
+- **Level 2 – Weak but Not Tiny**  
+  Medium-sized prime that can’t be brute-forced directly but can be solved with baby-step giant-step or Pollard’s rho.
+
+- **(Planned) Level 3 – Small Subgroup Trap**  
+  Exploit DHKE when the generator doesn’t produce the full multiplicative group.
+
+- **(Planned) Level 4 – Realistic p but Leaky Implementation**  
+  Learn about side-channels and timing attacks.
+
+---
+
+## General Challenge Structure
+
+For every level:
+
+1. **Server** generates a private key `a` and computes `A = g^a mod p`.
+2. It sends `(p, g, A)` to the player.
+3. The player computes `a` using the intended exploit for that level.
+4. On correct submission, the server reveals a one-time flag stored in `/flag.txt` and deletes it.
+
+---
+
+## Running a Challenge
+
+Each level is packaged as a Docker container:
 
 ```bash
-docker build -t dhke-level1 .
-docker run --rm -p 31337:31337 dhke-level1
-# In another terminal:
+docker build -t diffie-culty-levelX .
+docker run --rm -p 31337:31337 diffie-culty-levelX
+````
+
+Connect with:
+
+```bash
 nc localhost 31337
 ```
 
-## Interaction
+---
 
-On connect, you'll see something like:
+## Example Interaction (Level 1)
+
 ```
 Welcome to DHKE Level 1!
 p = 23
 g = 5
 A = 8
 Send your answer as: a=<integer>
-> 
+>
 ```
 
-You must compute `a` such that `g^a mod p == A` and send `a=<integer>`.
-If correct, you get the flag. Otherwise you are disconnected.
+Goal: Find `a` such that `g^a mod p == A`.
 
-## Tips
+---
 
-- For Level 1, just brute force `a` in `[2, p-2]` until `pow(g, a, p) == A`.
-- This is teaching you what the discrete logarithm problem is in the smallest toy setting.
+## Educational Goals
 
-## Files
+* Understand the discrete logarithm problem.
+* See how small primes make DHKE trivial to break.
+* Learn efficient algorithms for solving discrete logs.
+* Recognize bad parameter choices and insecure generators.
 
-- `server.py` — challenge service.
-- `Dockerfile` — container for deployment.
-- `run.sh` — entrypoint script (creates one-time flag).
-- `solve_example.py` — a reference solver (do not ship to players).
+---
+
+## Repository Structure
+
+* `level1/` — tiny prime brute-force challenge.
+* `level2/` — medium prime, requires baby-step giant-step or Pollard’s rho.
+* `common/` — shared utility code for generating flags and handling TCP connections.
+
+---
