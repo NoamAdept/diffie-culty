@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Diffie-Hellman Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>🔐 Diffie–Hellman Key Exchange Demo</h1>
+
+    <div>
+        <label for="prime">Prime (p):</label>
+        <input type="number" id="prime" value="23">
+        <label for="generator">Generator (g):</label>
+        <input type="number" id="generator" value="5">
+        <button onclick="generateDH()">Generate</button>
+    </div>
+
+    <pre id="output"></pre>
+
+    <button onclick="bruteforce()">Brute Force Discrete Log</button>
+    <pre id="attackOutput"></pre>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
