@@ -8,7 +8,8 @@ Each level demonstrates a specific flaw or weak parameter choice, ranging from t
 
 # The Discrete Log Problem
 
-<img width="1024" height="1024" alt="image" src="https://github.com/user-attachments/assets/b91a6ae5-bc35-49c1-8abf-d7ae47ae7f10" />
+<img width="512" height="512" alt="image" src="https://github.com/user-attachments/assets/b91a6ae5-bc35-49c1-8abf-d7ae47ae7f10" />
+
 
 
 
