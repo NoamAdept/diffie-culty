@@ -1,6 +1,4 @@
-Here’s a cleaned-up, more general `README.md` that covers the whole project instead of just Level 1:
 
-````markdown
 # diffie-culty
 
 A collection of Capture-the-Flag challenges exploring weaknesses in the Diffie–Hellman Key Exchange (DHKE) algorithm.
